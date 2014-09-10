@@ -27,13 +27,13 @@ Para el frontend del ejemplo se necesitan algunas dependencias como Bootsrtrap y
 bower install
 
 ```
-###Instalar dependencias del PHP
-Para el ejemplo se utilizo un mini-framework SILEX que nos permite mas ordenado las rutas que vamos a utilizar. Para utilizarlo instalamos las dependencias con el Composer.
+###Instalar dependencias de PHP
+Para el ejemplo se utilizo un mini-framework SILEX que nos permite tener mas ordenado las rutas que vamos a utilizar. Para ello instalamos las dependencias con el Composer.
 ```sh
 composer install
 
 ```
-Despues de tener todas las dependencias voy a empezar a explicarles como interar el mini proyecto con el PayU.
+Despues de tener todas las dependencias voy a empezar a explicarles como integrar el mini proyecto con PayU.
 
 ###Primeros Pasos
 Dentro de las herramientas que te ofrece PayU para realizar la integración con la pasarela transaccional, cuentas con la integración por medio del [SDK](http://docs.payulatam.com/wp-content/uploads/2014/02/payu-php-sdk.zip).

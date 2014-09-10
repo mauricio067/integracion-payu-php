@@ -142,16 +142,16 @@ $parameters = array(
 		PayUParameters::SIGNATURE => md5(PayU::$apiKey . "~" . PayU::$merchantId . "~" ."100" . "~" . "300" . "~MXN"),
 
 		);
-$app->post('/creditcard-payment', function() use($app) {
+$app->post('/creditcard-payment', function() use($app,$parameters) {
     return "";
 });
-$app->post('/cash-payment', function() use($app) {
+$app->post('/cash-payment', function() use($app,$parameters) {
 	return "";
 });
 ```
 Después deberíamos definir los parámetros necesarios para procesar el pago por tarjeta de crédito
 ```php
-$app->post('/creditcard-payment', function() use($app) {
+$app->post('/creditcard-payment', function() use($app,$parameters) {
 	/*Recibimos por POST los datos de la tarjeta de credito*/
 	$parameters[PayUParameters::PAYER_NAME] = $app['request']->get('payer_name');
 	$parameters[PayUParameters::CREDIT_CARD_NUMBER] = $app['request']->get('credit_card_number');
@@ -198,7 +198,7 @@ $response = array("status"=>"ok");
 ###Implementación de pago en efectivo
 Para la implementación de pago en efectivo es bastante similar con la diferencia que no recibimos los datos de la tarjeta de crédito sino el medio de pago offline, el DNI y nombre  del usuario que realizaría el pago, quedaría de la siguiente manera:
 ```php
-$app->post('/cash-payment', function() use($app) {
+$app->post('/cash-payment', function() use($app,$parameters) {
 	$parameters[PayUParameters::PAYER_NAME] = $app['request']->get('payer_name');
 	$parameters[PayUParameters::PAYER_COOKIE] = "cookie_ed_" . time();
 	$parameters[PayUParameters::PAYER_DNI] = $app['request']->get('payer_dni');

@@ -104,31 +104,65 @@
                                     <label class="col-sm-3 control-label" for="payment_method">Tarjeta</label>
                                     <div class="col-sm-3">
                                         <select class="form-control" name="payment_method" id="payment_method" >
-                                        <option value="VISA">VISA</option>
-                                        <option value="MASTERCARD">MASTERCARD</option>
-                                        <option value="AMEX">AMEX</option>
-                                    </select>
+                                            <option value="VISA">VISA</option>
+                                            <option value="MASTERCARD">MASTERCARD</option>
+                                            <option value="AMEX">AMEX</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-9">
-                                    <button onclick="Payment.creditcard()" type="button" class="btn btn-success">Pagar ahora</button>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button onclick="Payment.creditcard()" type="button" class="btn btn-success">Pagar ahora</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                    </form> 
-                </div>
-                <div class="tab-pane" id="cash">
+                            </fieldset>
+                        </form> 
+                    </div>
+                    <div class="tab-pane" id="cash">
+                        <div id="alert-cash" class="alert alert-info " role="alert">...</div>
+                        <form id="cash-form" class="form-horizontal" role="form" >
+                            <fieldset>
 
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="card-holder-name">Nombre</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="payer_name" id="card-holder-name" placeholder="Nombre">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="card-holder-name">DNI</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="payer_dni" id="card-holder-name" placeholder="DNI">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="payment_method">Tarjeta</label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="payment_method" id="payment_method" >
+                                            <option value="OXXO">OXXO</option>
+                                            <option value="BANCOMER">BANCOMER</option>
+                                            <option value="IXE">IXE</option>
+                                            <option value="SCOTIABANK">SCOTIABANK</option>
+                                            <option value="SANTANDER">7ELEVEN</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <button onclick="Payment.cash()" type="button" class="btn btn-success">Pagar ahora</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="lib/jquery/dist/jquery.min.js"></script>
-<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 
 
 </body>

@@ -75,10 +75,10 @@ $app->post('/creditcard-payment', function() use($app,$parameters) {
 		} else {
 			//TODO
 			$response["status"] = "error";
-			$response["code"] = $payu_response->code;
+			$response["message"] = $payu_response->code;
 			$statusCode = 500;
 		}
-	}catch (PayUException $exc) {
+	}catch (Exception $exc) {
 		$response["status"] = "error";
 		$response["message"] = $exc->getMessage();
 		$statusCode = 500;
@@ -101,10 +101,10 @@ $app->post('/cash-payment', function() use($app,$parameters) {
 		} else {
 			//TODO
 			$response["status"] = "error";
-			$response["code"] = $payu_response->code;
+			$response["message"] = $payu_response->code;
 			$statusCode = 500;
 		}
-	}catch (PayUException $exc) {
+	}catch (Exception $exc) {
 		$response["status"] = "error";
 		$response["message"] = $exc->getMessage();
 		$statusCode = 500;

@@ -1,0 +1,14 @@
+{
+    "name": "Mauricio/integracion-payu-php",
+    "description": "Guia y ejemplo de como integrar PayU con el SDK de PHP",
+    "authors": [
+        {
+            "name": "Mauricio",
+            "email": "mauricio067@gmail.com"
+        }
+    ],
+    "require": {
+       "silex/silex": "1.0.*@dev",
+        "twig/twig": ">=1.8,<2.0-dev"
+    }
+}

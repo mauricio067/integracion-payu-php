@@ -1,0 +1,16 @@
+{
+  "name": "integracion-payu-php",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mauricio067/integracion-payu-php",
+  "authors": [
+    "Mauricio <mauricio067@gmail.com>"
+  ],
+  "description": "Guia y ejemplo de como integrar PayU con el SDK de PHP",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}

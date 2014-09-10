@@ -8,3 +8,6 @@ body {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
+.tab-pane{
+	padding-top: 2em;
+}

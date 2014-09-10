@@ -3,45 +3,133 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>PayU</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PayU</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/main.css">
-    </head>
-    <body>
-        <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                  
-                    <a href="#" class="navbar-brand">PayU</a>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a href="#" class="navbar-brand">PayU</a>
+            </div>
+        </div>
+    </div>
+    <div role="main" class="container theme-showcase main-container">
+
+
+        <div class="page-header">
+            <h1>Payments</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#creditcard" role="tab" data-toggle="tab">Tarjeta de Credito</a></li>
+                    <li><a href="#cash" role="tab" data-toggle="tab">Efectivo</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="creditcard">
+                        <div id="alert-creditcard" class="alert alert-info " role="alert">...</div>
+                        <form id="creditcard-form" class="form-horizontal" role="form" >
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="card-holder-name">Nombre en la tarjeta</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="payer_name" id="card-holder-name" placeholder="Nombre del titular de la tarjeta">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="card-number">Numero de tarjeta</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="credit_card_number" id="card-number" placeholder="Numero de tarjeta de credito">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="expiry-month">Fecha de expiración</label>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <select class="form-control col-sm-2" name="month_exp" id="expiry-month">
+                                                    <option value="01">Ene (01)</option>
+                                                    <option value="02">Feb (02)</option>
+                                                    <option value="03">Mar (03)</option>
+                                                    <option value="04">Abr (04)</option>
+                                                    <option value="05">May (05)</option>
+                                                    <option value="06">Jun (06)</option>
+                                                    <option value="07">Jul (07)</option>
+                                                    <option value="08">Ago (08)</option>
+                                                    <option value="09">Sep (09)</option>
+                                                    <option value="10">Oct (10)</option>
+                                                    <option value="11">Nov (11)</option>
+                                                    <option value="12">Dic (12)</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <select class="form-control" name="year_exp">
+                                                    <option value="2014">2014</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="cvv">CVV</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Codigo de Seguridad">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="payment_method">Tarjeta</label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="payment_method" id="payment_method" >
+                                        <option value="VISA">VISA</option>
+                                        <option value="MASTERCARD">MASTERCARD</option>
+                                        <option value="AMEX">AMEX</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button onclick="Payment.creditcard()" type="button" class="btn btn-success">Pagar ahora</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form> 
+                </div>
+                <div class="tab-pane" id="cash">
+
                 </div>
             </div>
         </div>
-        <div role="main" class="container theme-showcase main-container">
+    </div>
+</div>
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 
 
-            <div class="page-header">
-                <h1>Payments</h1>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    
-                </div>
-            </div>
-        </div>
-
-        <script src="lib/jquery/dist/jquery.min.js"></script>
-        <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
-
-
-    </body>
+</body>
 </html>

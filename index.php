@@ -27,7 +27,6 @@ Environment::setReportsCustomUrl("https://stg.api.payulatam.com/reports-api/4.0/
 $app->get('/', function() use($app) {
 	return $app['twig']->render('template.html');
 });
-
 $parameters = array(
         //Ingrese aquí el número de cuotas.
 	PayUParameters::INSTALLMENTS_NUMBER => "1",
@@ -52,22 +51,26 @@ $parameters = array(
 	);
 
 
-$app->post('/creditcard-payment', function() use($app) {
+$app->post('/creditcard-payment', function() use($app,$parameters) {
 	/*Recibimos por POST los datos de la tarjeta de credito*/
 	$parameters[PayUParameters::PAYER_NAME] = $app['request']->get('payer_name');
 	$parameters[PayUParameters::CREDIT_CARD_NUMBER] = $app['request']->get('credit_card_number');
 	$parameters[PayUParameters::CREDIT_CARD_EXPIRATION_DATE] = $app['request']->get('year_exp')."/" . $app['request']->get('month_exp');
-	$parameters[PayUParameters::CREDIT_CARD_SECURITY_CODE] = $app['request']->get('ccv');
+	$parameters[PayUParameters::CREDIT_CARD_SECURITY_CODE] = $app['request']->get('cvv');
 	$parameters[PayUParameters::PROCESS_WITHOUT_CVV2] = false;
 	//VISA,MASTERCARD,ETC
 	$parameters[PayUParameters::PAYMENT_METHOD] = $app['request']->get('payment_method');
 	$response = array("status"=>"ok");
 	$statusCode = 200;
+
 	try {
 		$payu_response = PayUPayments::doAuthorizationAndCapture($parameters);
 		if ($payu_response->code == "SUCCESS") {
 			if ($payu_response->transactionResponse->state == "APPROVED") {
 				//TODO: Realizar una accion en el caso de que el estado de la transaccion este aprobado.
+			}else{
+				$response["status"] = "error";
+				$response["message"] = "NOT APPROVED";
 			}
 		} else {
 			//TODO
@@ -82,7 +85,7 @@ $app->post('/creditcard-payment', function() use($app) {
 	}
 	return $app->json($response,$statusCode);
 });
-$app->post('/cash-payment', function() use($app) {
+$app->post('/cash-payment', function() use($app,$parameters) {
 	$parameters[PayUParameters::PAYER_NAME] = $app['request']->get('payer_name');
 	$parameters[PayUParameters::PAYER_COOKIE] = "cookie_ed_" . time();
 	$parameters[PayUParameters::PAYER_DNI] = $app['request']->get('payer_dni');
